@@ -1,0 +1,19 @@
+{
+  "name": "letssystem",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Plataforma de intercambio local (LETS): una instancia con un solo administrador que crea uno o varios grupos, cada uno con su moneda, federables entre sí. ES/EN/FR/PT. Sin dependencias. Corre en Cloudflare Workers o con Node.",
+  "scripts": {
+    "start": "node --no-warnings src/server.mjs",
+    "seed": "node --no-warnings src/seed.mjs",
+    "reset": "node --no-warnings src/reset.mjs",
+    "cf:dev": "wrangler dev",
+    "cf:deploy": "wrangler deploy",
+    "cf:tail": "wrangler tail"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "license": "MIT"
+}

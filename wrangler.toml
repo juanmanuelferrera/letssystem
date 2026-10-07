@@ -1,0 +1,25 @@
+name = "letssystem"
+main = "worker/index.mjs"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Idioma por defecto del sitio: es | en | fr | pt
+[vars]
+LETS_LANG = "es"
+
+# Estáticos públicos (p. ej. el vídeo de portada en public/media/*).
+[assets]
+directory = "./public"
+binding = "ASSETS"
+# El vídeo necesita HTTP Range (seek). Sin esto, Cloudflare sirve /media/* desde
+# el edge y se salta el Worker, que es quien aplica los rangos.
+run_worker_first = ["/media/*"]
+
+# El guardián de los datos: un Durable Object con SQLite (plan gratuito).
+[[durable_objects.bindings]]
+name = "LEDGER"
+class_name = "Ledger"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Ledger"]

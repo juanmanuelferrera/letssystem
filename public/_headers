@@ -1,0 +1,6 @@
+# Cabeceras para los estáticos de /media/* (vídeo de portada, póster).
+# Cache-Control de 7 días: suficiente para un vídeo que cambia poco, sin
+# llegar a «immutable» (así, si se reemplaza el fichero, se refresca solo).
+/media/*
+  Cache-Control: public, max-age=604800
+  X-Content-Type-Options: nosniff
